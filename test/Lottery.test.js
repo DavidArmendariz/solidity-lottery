@@ -79,8 +79,10 @@ describe('Lottery', () => {
       .send({ from: accounts[0], value: web3.utils.toWei('2', 'ether') });
     const initialBalance = await web3.eth.getBalance(accounts[0]);
     await lottery.methods.pickWinner().send({ from: accounts[0] });
+    const players = await lottery.methods.getPlayers().call();
     const finalBalance = await web3.eth.getBalance(accounts[0]);
     const difference = finalBalance - initialBalance;
     expect(difference > web3.utils.toWei('1.8', 'ether')).toBe(true);
+    expect(players).toHaveLength(0);
   });
 });
