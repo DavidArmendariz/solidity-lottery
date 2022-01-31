@@ -42,7 +42,7 @@ const App = () => {
   const etherBalance = web3.utils.fromWei(balance, 'ether');
 
   return (
-    <div>
+    <div style={{ padding: '5rem' }}>
       <h1>Lottery Contract</h1>
       <p>This contract is managed by: {manager}</p>
       <p>
@@ -55,6 +55,7 @@ const App = () => {
         <div>
           <label>Amount of ether to enter</label>
           <input
+            style={{ marginLeft: '1rem' }}
             value={value}
             onChange={(event) => setValue(event.target.value)}
           />
